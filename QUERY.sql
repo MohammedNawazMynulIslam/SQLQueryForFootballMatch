@@ -101,3 +101,9 @@ select b.booking_id, u.full_name, m.fixture, (round(b.total_cost))  as total_cos
 from bookings b
 inner join users u on b.user_id = u.user_id
 inner join matches m on b.match_id = m.match_id
+
+
+-- Query 5: Display a comprehensive list of all users and their booking IDs, ensuring that fans who have never bought a ticket are still listed.
+select u.user_id, u.full_name, b.booking_id
+from users u
+left join bookings b on b.user_id = u.user_id 
