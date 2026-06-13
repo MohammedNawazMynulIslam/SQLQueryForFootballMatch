@@ -94,3 +94,10 @@ coalesce(payment_status, 'Action Required') as systematic_status
 from bookings
 where  payment_status is null
 
+-- Query 4: Retrieve match booking details along with the User's full name and the scheduled Match fixture teams.
+
+  
+select b.booking_id, u.full_name, m.fixture, (round(b.total_cost))  as total_cost
+from bookings b
+inner join users u on b.user_id = u.user_id
+inner join matches m on b.match_id = m.match_id
